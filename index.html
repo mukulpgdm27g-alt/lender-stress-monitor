@@ -481,7 +481,7 @@ const FY_MIN=2016, FY_MAX=2026;
 const BANKS=['Axis Bank','HDFC Bank','ICICI Bank','IndusInd Bank','Kotak Mahindra Bank'];
 const NBFCS=['Bajaj Finance','Cholamandalam','L&T Finance','M&M Financial','Shriram Finance'];
 const LENDERS=[...BANKS,...NBFCS], INDICES=['Nifty Bank','Nifty 50'], ALL=[...LENDERS,...INDICES];
-const FOCAL=['ICICI Bank','L&T Finance'];
+const FOCAL=['Kotak Mahindra Bank','L&T Finance'];
 const COLORS={'ICICI Bank':'#6f8dff','L&T Finance':'#ff7f45','Axis Bank':'#a78bdb','HDFC Bank':'#34c5d6','IndusInd Bank':'#9aa7b8','Kotak Mahindra Bank':'#ea6aa0',
   'Bajaj Finance':'#f2c230','Cholamandalam':'#a6cc4d','M&M Financial':'#43c496','Shriram Finance':'#cf9468','Nifty Bank':'#1a1a1a','Nifty 50':'#808080'};
 const METRICS={
@@ -1032,7 +1032,7 @@ function renderIdi(){
   });
 }
 
-const SEL={bank:'ICICI Bank',nbfc:'L&T Finance'};
+const SEL={bank:'Kotak Mahindra Bank',nbfc:'L&T Finance'};
 function fixTokens(){const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;const sub=t=>t.replace(/⟦B⟧/g,SEL.bank).replace(/⟦N⟧/g,SEL.nbfc);
   while(n=w.nextNode()){if(n.__tpl===undefined)n.__tpl=/⟦[BN]⟧/.test(n.nodeValue)?n.nodeValue:null;if(n.__tpl)n.nodeValue=sub(n.__tpl)}
   document.querySelectorAll('[title],[aria-label]').forEach(e=>{['title','aria-label'].forEach(a=>{const v=e.getAttribute(a);if(v&&/⟦[BN]⟧/.test(v))e.setAttribute(a,sub(v))})})}
@@ -1182,6 +1182,7 @@ $('selBank').onchange=()=>setSel($('selBank').value,SEL.nbfc);$('selNbfc').oncha
 $('themeBtn').onclick=()=>setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');
 $('chapbar').onclick=e=>{const b=e.target.closest('button');if(b)show(CH[+b.dataset.ch][0])};
 applyTheme('dark');
+setEvents();
 boot();
 </script>
 </body>
